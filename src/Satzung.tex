@@ -1,0 +1,241 @@
+% \documentclass[12pt,paper=a4,ngerman]{scrreprt}
+\documentclass[12pt,paper=a4,ngerman]{report}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
+
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage[default]{raleway}
+\usepackage{hyperref}
+\usepackage{eurosym}
+\usepackage{url}
+\usepackage{enumitem} % Für benutzerdefinierte Listen
+\usepackage{musicography}
+\usepackage{relsize}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{p_petrol}{HTML}{9EC2C0}
+\definecolor{p_mint}{HTML}{D3F6E8}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % reset header and footer
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{\color{p_petrol}Satzung - Plan b Chor Bonn e.V.}
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\baselinestretch}{1.15}
+
+\setcounter{secnumdepth}{0} \setcounter{tocdepth}{3}
+
+\hypersetup{
+pdfauthor = {plan-b-chor.de},
+pdftitle = {Satzung Plan b Chor Bonn e.V.},
+colorlinks,
+linkcolor=p_petrol,
+urlcolor=p_petrol,
+}
+
+\title{\textbf{Satzung}}
+\author{Plan b Chor Bonn e.V.}
+\date{16. April 2024}
+
+\newcounter{subparagraphCounter} % Zähler für Unterpunkte
+
+% Definition eines neuen Befehls für Unterparagraphen
+\newcommand{\mysubparagraph}{%
+    \noindent(\alph{subparagraphCounter}) % Gibt den Buchstaben (a, b, c, ...) aus
+    \refstepcounter{subparagraphCounter} % Erhöht den Zähler für Unterparagraphen um 1
+    \hspace{1em}
+}
+
+%%%
+
+\newcounter{paragraphCounter} % Erstellt einen neuen Zähler namens paragraphCounter
+\setcounter{paragraphCounter}{1}
+
+% Definition eines neuen Befehls für Paragraphen
+\newcommand{\myparagraph}{
+    \noindent\S\ \theparagraphCounter % Gibt das Paragraphensymbol und den Zähler aus
+    \label{par-\theparagraphCounter}
+    \refstepcounter{paragraphCounter} % Erhöht den Zähler um 1
+    \setcounter{subparagraphCounter}{0} % Setzt den Unterabschnittszähler zurück
+    \hspace{1em}
+}
+
+% Anpassung des Aufzählungsstils für itemize
+\setlist[itemize,1]{label=\myparagraph, before=\addtocounter{paragraphCounter}{-1}, left=0pt} % 1. Ebene
+\setlist[itemize,2]{label=\mysubparagraph, left=7pt} % 2. Ebene
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\section{Name und Sitz}
+
+\begin{itemize}
+    \item Der Verein führt den Namen „Plan b Chor Bonn“ mit dem Zusatz e.V.
+    \item Der Verein hat seinen Sitz in Bonn und ist beim Amtsgericht in Bonn in das Vereinsregister auf dem Registerblatt VR 12220 eingetragen.
+\end{itemize}
+
+\section{Zweck}
+
+\begin{itemize}
+    \item Der Plan b Chor Bonn e.V. sieht seine Aufgabe in der Pflege des Singens in Gemeinschaft. Dazu stellt er sich einer breit gefächerten, vokalpädagogisch geprägten Aufgabenstellung. Der Satzungszweck wird insbesondere durch folgende Maßnahmen verwirklicht: Durch regelmäßige Proben bereitet sich der Verein auf Konzerte und andere musikalische Veranstaltungen vor und stellt sich dabei auch in den Dienst der Öffentlichkeit.
+    \item Es werden grundlegende Werte des Singens vermittelt, künstlerische Leistungen gefördert, sowie Interesse und Verständnis für alle Bereiche der Musik geweckt beziehungsweise vertieft.
+    \item Der Plan b Chor Bonn e.V. erfüllt eine kulturelle und bildungsrelevante Gemeinschaftsaufgabe. Das Leitbild des Vereins ist Richtlinie seiner Arbeit. Der Plan b Chor Bonn e.V. bekennt sich zu der im Grundgesetz der Bundesrepublik Deutschland verankerten demokratischen Staats- und Lebensform. Er ist parteipolitisch und konfessionell neutral und richtet sich an alle Personen unabhängig ihrer Herkunft, ihres Aussehens und ihrer geschlechtlichen oder sexuellen Identität.
+\end{itemize}
+
+\section{Gemeinnützigkeit}
+
+\begin{itemize}
+    \item Der Verein ist selbstlos tätig. Er verfolgt nicht in erster Linie eigenwirtschaftliche Zwecke. Mittel des Vereins dürfen nur für die satzungsgemäßen Zwecke verwendet werden.
+    \item Die Mitglieder erhalten keine Zuwendungen aus Mitteln des Vereins. Es darf keine Person durch Ausgaben, die dem Zweck des Vereins fremd sind, oder durch unverhältnismäßig hohe Vergütungen begünstigt werden oder durch eine geringere Vergütung diskriminiert werden.
+    \item Alle Inhaber:innen von Vereinsämtern sind ehrenamtlich tätig.
+    \item Der Verein verfolgt ausschließlich und unmittelbar gemeinnützige Zwecke im Sinne des Abschnitts „steuerbegünstigte Zwecke“ der \href{https://www.gesetze-im-internet.de/ao_1977/__52.html}{Abgabenordnung} (AO).
+    \item Jeder Beschluss über die Änderung der Satzung ist vor dessen Anmeldung beim Registergericht dem zuständigen Finanzamt vorzulegen.
+\end{itemize}
+
+\section{Mitgliedschaft}
+
+\begin{itemize}
+    \item Der Verein besteht aus singenden (aktiven) und fördernden (passiven) Mitgliedern. Ein singendes Mitglied kann jede musikalisch und gesanglich interessierte Person sein, deren Aufnahme durch den Vorstand bestätigt wurde.
+    \\
+    \\
+    Es gibt folgende Formen der Mitgliedschaft:
+    \begin{itemize}
+        \item Aktives Mitglied
+        \item Passives Mitglied, dies kann jede natürliche oder juristische Person sein, die die Bestrebungen des Chores unterstützen will, ohne sich selbst musikalisch zu beteiligen.
+        \item Die Mitgliederversammlung kann Ehrenmitglieder bestimmen. Sie gelten als aktives Mitglied.
+    \end{itemize}
+    \item Um die Aufnahme in den Verein ist beim Vorstand in Textform nachzusuchen. Über die Aufnahme entscheidet der Vorstand mit einfacher Mehrheit. Die Chorleitung tritt in beratender Funktion hinzu. Lehnen diese den Aufnahmeantrag ab, so steht der betroffenen Person die Berufung im Härtefallausschuss zu. Dieser entscheidet endgültig.
+\end{itemize}
+
+\subsection{Beendigung der Mitgliedschaft}
+
+\begin{itemize}
+    \item Die Mitgliedschaft endet
+    \begin{itemize}
+        \item durch freiwilligen Austritt,
+        \item durch Tod,
+        \item durch Ausschluss.
+    \end{itemize}
+    
+    zu \hyperref[par-13]{(a)} Der freiwillige Austritt erfolgt durch Erklärung in Textform gegenüber dem Vorstand unter Einhaltung einer Kündigungsfrist von sechs Wochen zum Monatsende. Bis zum Zeitpunkt des Austritts bleibt das ausscheidende Mitglied zur Bezahlung des Mitgliedsbeitrages verpflichtet. Erfolgt der Austritt innerhalb von zwei Wochen nach einer durch die Mitgliederversammlung wirksam beschlossenen Beitragserhöhung, so zahlt das Mitglied bis zum Zeitpunkt des Austritts den bisherigen Mitgliedsbeitrag.
+    \\
+    \\
+    zu \hyperref[par-13]{(b)} Der Tod eines Mitgliedes bewirkt das sofortige Ende der Mitgliedschaft.
+    \\
+    \\
+    zu \hyperref[par-13]{(c)} Ein Mitglied kann, wenn es gegen die Vereinsinteressen (s.§16) gröblich verstoßen hat, mit sofortiger Wirkung durch den Vorstand ausgeschlossen werden. Der Vorstand entscheidet über den Ausschluss mit einfacher Mehrheit. Vor der Beschlussfassung ist dem Mitglied unter Setzung einer Frist von zwei Wochen Gelegenheit zur Rechtfertigung zu geben. Der begründete Beschluss über den Ausschluss ist dem Mitglied vom Vorstand in Textform bekanntzumachen. Gegen den Beschluss steht dem Mitglied die Einlage einer Berufung im Härtefallausschuss zu. Die Berufung muss innerhalb einer Frist von einem Monat nach Darlegung der Gründe beim Vorstand eingelegt werden. Macht ein Mitglied von der Berufung keinen Gebrauch, so unterwirft es sich damit dem Ausschließungsbeschluss mit der Folge, dass eine gerichtliche Anfechtung nicht mehr möglich.
+\end{itemize}
+
+\subsection{Pflichten der Mitglieder}
+
+\begin{itemize}
+    \item Alle Mitglieder haben die Interessen des Vereins zu fördern, die singenden Mitglieder haben außerdem die Pflicht, regelmäßig an den Chorproben teilzunehmen. Bei mehrfachem Fehlen hat der Vorstand in Absprache mit der musikalischen Leitung durch ein Vorsingen die Möglichkeit den musikalischen Entwicklungsstand des Mitglieds zu überprüfen, um über den Verbleib im Chor zu entscheiden. Gegen diese Entscheidung kann nach \hyperref[par-13]{§13c} beim Härtefallausschuss Revision eingelegt werden.
+    \item Jedes Mitglied ist verpflichtet, den von der Mitgliederversammlung festgesetzten Mitgliedsbeitrag pünktlich zu entrichten. Gleiches gilt für den von der Mitgliederversammlung aus besonderem Anlass beschlossenen Umlagesatz. Von den Mitgliedern werden Geldbeiträge erhoben. Die Höhe dieser Zahlungen, die Fälligkeit, die Art und Weise der Zahlung, zusätzliche Gebühren bei Zahlungsverzug oder Verwendung eines anderen als des beschlossenen Zahlungsverfahrens regelt die Beitragsordnung, die von der Mitgliederversammlung beschlossen wird. Die \href{https://plan-b-chor.de/dokumente}{Beitragsordnung} ist nicht Satzungsbestandteil. Sie wird den Mitgliedern in der jeweils aktuellen Fassung in Textform mitgeteilt und danach frei zur Verfügung gestellt.
+    \item Jedes Mitglied ist verpflichtet, die Werte des Vereins einzuhalten. Diese Werte sind insbesondere der respektvolle Umgang miteinander und die Wahrung des in \hyperref[par-5]{§5} beschriebenen Leitbildes des Vereins.
+    \item Wenn es einem Mitglied durch gegebene Umstände (z.B. Krankheit) nicht möglich ist, Teile der Satzung einzuhalten, kann es beim Vorstand einen Antrag auf Befreiung von diesen stellen.
+    \item Eine Befreiung von Pflichten ist stets befristet. Höchstens jedoch auf die Dauer eines Geschäftsjahres.
+    \item Auf die Befreiung besteht kein Rechtsanspruch.
+\end{itemize}
+
+\section{Geschäftsjahr und Verwaltung}
+
+\begin{itemize}
+    \item Das Geschäftsjahr entspricht dem Kalenderjahr.
+    \item Erfüllungsort und Gerichtsstand sind Bonn.
+    \item Bekanntmachungen des Plan b Chor Bonn e.V. erfolgen in Textform. Die Textform ist auch gewahrt, wenn die Bekanntmachungen per E-Mail erfolgen.
+\end{itemize}
+
+\section{Organe des Vereins}
+
+\begin{itemize}
+    \item Die Organe des Vereins sind die Mitgliederversammlung und der Vorstand.
+\end{itemize}
+
+\subsection{Die Mitgliederversammlung}
+
+\begin{itemize}
+    \item Die Mitgliederversammlung ist mindestens einmal im Laufe eines Jahres durch den Vorstand einzuberufen. Außerdem, wenn mindestens ein Drittel der Mitglieder dies schriftlich beantragt.
+    \item Eine Mitgliederversammlung ist vierzehn Tage vorher unter Bekanntgabe des Ortes, der Zeit und der Tagesordnung in Textform einzuberufen. Jedes Mitglied hat bis spätestens eine Woche vor der Mitgliederversammlung die Möglichkeit, die Tagesordnung zu ergänzen oder Anmerkungen zu machen. Die ordnungsgemäß einberufene Mitgliederversammlung ist beschlussfähig, wenn die Hälfte der aktiven Mitglieder anwesend ist.
+    \item Die Mitgliederversammlung wird von der/dem Vorsitzenden oder dessen/deren Stellvertreter:in geleitet. Alle Beschlüsse, mit Ausnahme des Beschlusses der Auflösung des Vereins, sowie Satzungs- und Geschäftsordnungsänderungen, werden mit einfacher Stimmenmehrheit gefasst und durch die Schriftführung protokolliert. Stimmberechtigt sind alle Mitglieder. Stimmengleichheit gilt als Ablehnung.
+    \item Ist die Mitgliederversammlung nicht beschlussfähig, ist eine weitere Mitgliederversammlung einzuberufen, die in jedem Fall beschlussfähig ist, wenn satzungsgemäß eingeladen worden ist, ohne Rücksicht auf die Zahl der erschienenen Mitglieder. In der Einberufung, die der Vorstand vornimmt, ist auf diese außerordentliche Beschlussfähigkeit hinzuweisen.
+    \item Die Mitgliederversammlung hat folgende Aufgaben:
+    \begin{itemize}
+        \item Feststellung, Abänderung und Auslegung der Satzung, der Geschäftsordnung und der Beitragsordnung
+        \item Entgegennahme der Jahresberichte und der Jahresabrechnung des Vorstandes
+        \item Wahl des geschäftsführenden Vorstandes
+        \item Wahl von jährlich einem/ einer Kassenprüfer:in für die Dauer von zwei Geschäftsjahren, diese dürfen nicht Mitglied im geschäftsführenden Vorstand sein
+        \item Genehmigung der Jahresabrechnung und Entlastung des Vorstandes
+        \item Wahl eines Härtefallausschusses
+        \item Entgegennahme des musikalischen Berichtes der Chorleitung
+        \item Ernennung von Ehrenmitgliedern
+        \item Einrichtung von Ausschüssen und Wahlen der jeweiligen Mitglieder
+        \item Beschlussfassung über die Auflösung des Vereins
+    \end{itemize}
+    \item Jedem Mitglied steht das Recht zu, Anträge einzubringen. Diese Anträge sind bis sieben Tage vor der Mitgliederversammlung in Textform beim Vorstand einzureichen.
+
+\end{itemize}
+
+\subsection{Der Vorstand}
+
+\begin{itemize}
+    \item Der Vorstand besteht aus
+    \begin{itemize}
+        \item dem geschäftsführenden Vorstand als gewählte Mitglieder
+        \item einer Person aus dem Chorrat als geborenes Mitglied
+    \end{itemize}
+    \item Dem geschäftsführenden Vorstand gehören an:
+    \begin{itemize}
+        \item der Vorsitz
+        \item der stellvertretende Vorsitz
+        \item die Schriftführung
+        \item die Kassenführung
+    \end{itemize}
+    Der geschäftsführende Vorstand ist Vorstand im Sinne des \href{https://www.gesetze-im-internet.de/bgb/__26.html}{§26 BGB}.
+    \item Der Vorstand fasst seine Beschlüsse in Vorstandssitzungen, die vom Vorsitz oder stellvertretenden Vorsitz schriftlich oder mündlich einberufen werden. Eine Vorstandssitzung ist beschlussfähig, wenn mindestens drei Mitglieder des Vorstands anwesend sind. Beschlüsse werden mit einfacher Mehrheit gefällt. Die Beschlüsse des Vorstandes sind in Textform niederzulegen und vom Vorsitz und der Schriftführung zu unterzeichnen.
+    \item Jedes Mitglied des geschäftsführenden Vorstands ist allein vertretungsberechtigt.
+    \item Der Vorstand wird für ein Geschäftsjahr gewählt. Er bleibt bis zur satzungsgemäßen Bestellung des nächsten Vorstandes im Amt.
+    \item Vorstandsmitglieder haben das Recht auf einen Rücktritt. Dazu ist dem übrigen Vorstand eine Rücktrittserklärung in Textform vorzulegen. Bei Rücktritt sind Neuwahlen des unbesetzten Amts erforderlich.
+    \item Scheidet ein Mitglied des geschäftsführenden Vorstandes während der Wahlzeit aus, so übernimmt eines der übrigen Vorstandsmitglieder, auf Beschluss des Vorstands und unter Einwilligung des betreffenden Mitglieds, die Geschäfte des Ausgeschiedenen bis zur satzungsgemäßen Neuwahl der Vorstandschaft.
+\end{itemize}
+
+\subsubsection{Entlastung des Vorstandes}
+
+\begin{itemize}
+    \item Die anwesenden Stimmberechtigten der Mitgliederversammlung entlasten den Vorstand für dessen Arbeit nach Entgegennahme der Kassenprüfung und des Rechenschaftsberichts. Wird ein Vorstandsmitglied nicht entlastet, kann es nicht wiedergewählt werden.
+\end{itemize}
+
+\section{Ausschüsse}
+
+\begin{itemize}
+    \item Ausschüsse sind Arbeitsgremien des Plan b Chor Bonn e.V. Sie haben die Aufgabe, die von der Mitgliederversammlung getroffenen Beschlüsse umzusetzen.
+    \item Die Mitgliederversammlung kann Ausschüsse zu bestimmten Schwerpunkten für einen festgelegten Zeitraum einrichten. Die Laufzeit dieser Gremien kann von der Mitgliederversammlung um einen festgelegten Zeitraum verlängert werden. Die Dauer der Mitgliedschaft wird von der Mitgliederversammlung bestimmt. Die Mitgliedschaft ist persönlich wahrzunehmen. Die Mitgliederversammlung beschließt bei der Einrichtung eines Ausschusses eine Mindest- und Höchstmitgliederzahl. Die Ausschüsse werden von einem Mitglied des Vorstands geleitet.
+    \item Der Chorrat wird von der Mitgliederversammlung für ein Jahr gewählt. Er besteht aus mindestens zwei aktiven Mitgliedern. Der Chorrat unterstützt den Vorstand bei seiner Arbeit. Er entsendet ein Mitglied in den Vorstand. Ist der Ausschuss vakant, so übernimmt der Vorstand seine Aufgaben.
+    \item Der Härtefallausschuss wird von der Mitgliederversammlung für zwei Jahre gewählt. Er besteht aus zwei Mitgliedern und ist paritätisch zu besetzen. Mitglieder des Vorstands dürfen nicht gewählte Mitglieder des Härtefallausschusses sein. Der Härtefallausschuss organisiert seine Arbeit eigenverantwortlich und wird als einziger Ausschuss von keinem Mitglied des Vorstands geleitet. Der Härtefallausschuss berät und entscheidet innerhalb von zwei Wochen, nach Einlage von Berufungen. Der Härtefallausschuss beschließt seine Entscheidungen konsensuell.
+\end{itemize}
+
+\section{Chorleitung}
+
+\begin{itemize}
+    \item Die Verpflichtung der Chorleitung erfolgt durch einen schriftlichen Vertrag mit dem Vorstand. Die Mitglieder werden darüber in angemessener Frist in Textform in Kenntnis gesetzt.
+    \item Die Chorleitung wird bei Bedarf zu Vorstandssitzungen beratend, ohne Stimmrecht hinzugezogen.
+\end{itemize}
+
+\section{Auflösung des Vereins}
+
+\begin{itemize}
+    \item Die Auflösung des Vereins kann nur in einer Mitgliederversammlung mit drei Vierteln der erschienenen Mitglieder beschlossen werden. Sofern die Mitgliederversammlung nichts anderes beschließt, sind der Vorsitz und der stellvertretende Vorsitz die gemeinsam vertretungsberechtigten Liquidatoren.
+    \item Bei Auflösung oder Aufhebung des Vereins oder bei Wegfall steuerbegünstigter Zwecke fällt das Vermögen des Vereins an den „Tierschutz Bonn und Umgebung e. V.“ (St.-Nr.: 205/5769/0689), der es unmittelbar und ausschließlich für gemeinnützige Zwecke zu verwenden hat.
+\end{itemize}
+
+\section{Inkrafttreten der Satzung}
+
+\begin{itemize}
+    \item Die vorliegende Satzung ist in der Mitgliederversammlung vom 16.04.2024 beschlossen worden und tritt am Tage der Eintragung in das Vereinsregister (15.07.2024) in Kraft.
+    \item Der Vorstand kann zur vorliegenden Satzung eine Beitrags- und Geschäftsordnung erlassen.
+\end{itemize}
+
+\end{document}
