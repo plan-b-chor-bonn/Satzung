@@ -24,7 +24,7 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}/src:/src" \
             latex-compiler \
-            /bin/bash -c "pdflatex -output-directory /src /src/Satzung.tex"
+            /bin/bash -c "pdflatex -output-directory /src /src/Satzung.tex && pdflatex -output-directory /src /src/Satzung.tex"
 
       - name: Upload compiled PDF artifact
         uses: actions/upload-artifact@v3
@@ -65,3 +65,5 @@ jobs:
           asset_path: Satzung.pdf  # Directly points to the PDF file
           asset_name: Satzung.pdf
           asset_content_type: application/pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
