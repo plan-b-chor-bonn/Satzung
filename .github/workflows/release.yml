@@ -13,38 +13,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
+      - name: Set up docker buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build Docker image
+      - name: Prepare build Dockerfile
         run: docker build -t latex-compiler .
 
-      - name: Compile LaTeX document
+      - name: Build Satzung.pdf
         run: |
           docker run --rm \
             -v "${{ github.workspace }}/src:/src" \
             latex-compiler \
             /bin/bash -c "pdflatex -output-directory /src /src/Satzung.tex && pdflatex -output-directory /src /src/Satzung.tex"
 
-      - name: Upload compiled PDF artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: Satzung.pdf
           path: src/Satzung.pdf
 
   release:
+    if: (${{ github.ref == 'refs/heads/main' }} && github.event_name == 'push')
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
-      - name: Download compiled PDF artifact
+      - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: Satzung.pdf
           path: .
-
-      - name: Verify PDF file location
-        run: ls -alh
 
       - name: Create GitHub Release
         id: create_release
@@ -58,7 +55,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload PDF to Release
+      - name: Add PDF to GitHub Release
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
@@ -67,3 +64,24 @@ jobs:
           asset_content_type: application/pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  deploy:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Satzung.pdf
+          path: .
+
+      - name: Upload Satzung.pdf to plan-b-chor.de
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.ftp_host }}
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          port: ${{ secrets.ftp_port }}
+          protocol: ${{ secrets.ftp_protocol }}
+          local-dir: ${{ vars.ftp_source_dir }}
+          server-dir: ${{ vars.ftp_dest_dir }}
