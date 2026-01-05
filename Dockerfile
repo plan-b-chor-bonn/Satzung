@@ -1,6 +1,6 @@
-FROM ubuntu:24.10
+FROM ubuntu:25.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -q && \
     apt-get install -y -qq --no-install-recommends \
