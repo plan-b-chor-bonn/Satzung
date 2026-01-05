@@ -1,0 +1,361 @@
+% ABOUTME: LaTeX source for the Geschäftsordnung (bylaws) of Plan b Chor Bonn e.V.
+% ABOUTME: Defines rules of procedure for member assemblies, voting, elections, and protocols.
+\documentclass[12pt,paper=a4,ngerman]{report}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
+
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+\usepackage[default]{raleway}
+\usepackage{hyperref}
+\usepackage{eurosym}
+\usepackage{url}
+\usepackage{enumitem} % Für benutzerdefinierte Listen
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{*2}{1.5em}
+\usepackage{musicography}
+\usepackage{relsize}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{p_petrol}{HTML}{9EC2C0}
+\definecolor{p_mint}{HTML}{D3F6E8}
+
+\usepackage[framemethod=tikz]{mdframed}
+
+% Markierung für Passagen, von denen nicht abgewichen werden kann
+\mdfdefinestyle{fest}{
+    topline=false,
+    bottomline=false,
+    rightline=true,
+    leftline=false,
+    linewidth=3pt,
+    linecolor=p_petrol,
+    innerleftmargin=0pt,
+    innerrightmargin=1.5em,
+    innertopmargin=0pt,
+    innerbottommargin=0pt,
+    leftmargin=0pt,
+    rightmargin=-3pt-1.5em,
+    skipabove=0pt,
+    skipbelow=0pt
+}
+\newcommand{\fest}[1]{\begin{mdframed}[style=fest]#1\end{mdframed}}
+
+% Unsichtbare Markierung für konsistente Formatierung
+\mdfdefinestyle{normal}{
+    topline=false,
+    bottomline=false,
+    rightline=true,
+    leftline=false,
+    linewidth=3pt,
+    linecolor=white,
+    innerleftmargin=0pt,
+    innerrightmargin=1.5em,
+    innertopmargin=0pt,
+    innerbottommargin=0pt,
+    leftmargin=0pt,
+    rightmargin=-3pt-1.5em,
+    skipabove=0pt,
+    skipbelow=0pt
+}
+\newcommand{\normal}[1]{\begin{mdframed}[style=normal]#1\end{mdframed}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % reset header and footer
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{\color{p_petrol}Geschäftsordnung - Plan b Chor Bonn e.V.}
+\fancyfoot[C]{\thepage}
+
+\renewcommand{\baselinestretch}{1.15}
+
+\setcounter{secnumdepth}{0} \setcounter{tocdepth}{3}
+
+\hypersetup{
+pdfauthor = {plan-b-chor.de},
+pdftitle = {Geschäftsordnung Plan b Chor Bonn e.V.},
+colorlinks,
+linkcolor=p_petrol,
+urlcolor=p_petrol,
+}
+
+\title{\textbf{Geschäftsordnung}}
+\author{Plan b Chor Bonn e.V.}
+\date{16. April 2024}
+
+\newcounter{subparagraphCounter} % Zähler für Unterpunkte
+
+% Definition eines neuen Befehls für Unterparagraphen
+\newcommand{\mysubparagraph}{%
+    \noindent(\alph{subparagraphCounter}) % Gibt den Buchstaben (a, b, c, ...) aus
+    \refstepcounter{subparagraphCounter} % Erhöht den Zähler für Unterparagraphen um 1
+    \hspace{1em}
+}
+
+%%%
+
+\newcounter{paragraphCounter} % Erstellt einen neuen Zähler namens paragraphCounter
+\setcounter{paragraphCounter}{1}
+
+% Definition eines neuen Befehls für Paragraphen
+\newcommand{\myparagraph}{
+    \noindent\S\ \theparagraphCounter % Gibt das Paragraphensymbol und den Zähler aus
+    \label{par-\theparagraphCounter}
+    \refstepcounter{paragraphCounter} % Erhöht den Zähler um 1
+    \setcounter{subparagraphCounter}{0} % Setzt den Unterabschnittszähler zurück
+    \hspace{1em}
+}
+
+% Anpassung des Aufzählungsstils für itemize
+\setlist[itemize,1]{label=\myparagraph, before=\addtocounter{paragraphCounter}{-1}, left=0pt, itemsep=1.5em} % 1. Ebene
+\setlist[itemize,2]{label=\mysubparagraph, left=7pt} % 2. Ebene
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Allgemeines}
+
+\begin{itemize}
+    \item \fest{Diese Geschäftsordnung ist nicht Bestandteil der Satzung. Beschlüsse über die Änderungen der Geschäftsordnung gelten ab dem auf die Beschlussfassung folgenden Tag.}
+    \item \fest{Die Geschäftsordnung gilt für die Mitgliederversammlung des Plan b Chor Bonn e.V. Sie ist entsprechend auf andere Organe des Plan b Chor Bonn e.V. anzuwenden, soweit diese keine eigene Geschäftsordnung haben.}
+\end{itemize}
+
+\section{Termin}
+
+\begin{itemize}
+    \item \fest{Der Termin der Mitgliederversammlung wird von ihr selber beschlossen. Eine außerordentliche Mitgliederversammlung ist außerdem einzuberufen, wenn es ein Drittel der stimmberechtigten Mitglieder der Mitgliederversammlung unter Angabe von Gründen verlangen (s. Satzung §24).}
+\end{itemize}
+
+\section{Vorläufige Tagesordnung}
+
+\begin{itemize}
+    \item \normal{Der Vorstand bereitet die vorläufige Tagesordnung vor und verschickt diese mit der Einladung.}
+\end{itemize}
+
+\section{Vorbereitung}
+
+\begin{itemize}
+    \item \normal{Der Vorstand bereitet die Mitgliederversammlung vor.}
+
+    \item \fest{Anträge an die Mitgliederversammlung müssen spätestens eine Woche vor Beginn der Mitgliederversammlung in Textform beim Vorstand eingereicht sein. Der Vorstand ist verpflichtet, diese Anträge auf der von ihm einberufenen Mitgliederversammlung zu behandeln und die Mitglieder über die eingegangenen Anträge in Textform zu informieren.}
+    \item \fest{Anträge zu Satzungs-, Geschäftsordnungs- und Beitragsordnungsänderungen müssen zwei Wochen vor der Mitgliederversammlung den Mitgliedern der Mitgliederversammlung zugestellt sein.}
+\end{itemize}
+
+\newpage
+
+\section{Einladung}
+
+\begin{itemize}
+    \item \fest{Zur Mitgliederversammlung wird spätestens zwei Wochen vor dem festgesetzten Termin unter Angabe der vorläufigen Tagesordnung durch den Vorstand in Textform eingeladen.}
+    \item \fest{Spätestens eine Woche vor dem festgesetzten Termin der Mitgliederversammlung hat der Vorstand die notwendigen Unterlagen, sowie ihren Rechenschaftsbericht und die Anträge in Textform zu versenden.}
+\end{itemize}
+
+\section{Teilnahme und Stimmberechtigung}
+
+\begin{itemize}
+    \item \fest{Jedes Mitglied des Plan b Chor Bonn e.V. ist stimmberechtigtes Mitglied der Mitgliederversammlung. Stimmen können nicht delegiert werden.}
+\end{itemize}
+
+\section{Leitung/Moderation und Protokollführung}
+
+\begin{itemize}
+    \item \fest{Die Mitgliederversammlung wird von der/dem Vorsitzenden oder dessen/deren Stellvertreter:in geleitet (s. Satzung §26).}
+    \item \normal{Gegen alle Maßnahmen der Leitung/Moderation ist Widerspruch möglich. Über den Widerspruch entscheidet die Mitgliederversammlung mit einfacher Mehrheit aller Versammlungsteilnehmer:innen.}
+    \item \normal{Die Protokollführung obliegt dem Vorstand. Er kann diese Aufgabe delegieren.}
+\end{itemize}
+
+\section{Beschlussfähigkeit}
+
+\begin{itemize}
+    \item \fest{Die Mitgliederversammlung ist beschlussfähig, wenn Paragraph 25 der Satzung des Plan b Chor Bonn e.V. erfüllt ist (s. Satzung §25). Ist die Mitgliederversammlung nicht beschlussfähig, gilt Paragraph 27 der Satzung des Plan b Chor Bonn e.V. (s. Satzung §27).}
+    \item \normal{Die zu Beginn der Sitzung festgestellte Beschlussfähigkeit ist so lange gegeben, bis auf Antrag eines Mitglieds der Mitgliederversammlung die Moderation die Beschlussunfähigkeit festgestellt hat. Die Moderation kann die Feststellung auf kurze Zeit aussetzen.}
+    \item \normal{Nach Feststellung der Beschlussunfähigkeit im Verlaufe der Sitzung ist die Entscheidung über Vorlagen, Anträge und Berichte solange ausgesetzt, bis die Beschlussfähigkeit wiederhergestellt ist. In dieser Zeit ist die Mitgliederversammlung beratungsunfähig. Anträge können nicht gestellt werden, Abstimmungen nicht vorgenommen werden. Geschäftsordnungsanträge auf Prüfung der Beschlussfähigkeit sind davon ausgenommen.}
+\end{itemize}
+
+\section{Beginn der Beratung}
+
+\begin{itemize}
+    \item \normal{Vor Eintritt der Tagesordnung sind zunächst folgende Angelegenheiten in nachstehender Reihenfolge festzulegen:}
+    \begin{itemize}
+        \item Feststellung der Beschlussfähigkeit
+        \item Festsetzung der endgültigen Tagesordnung
+
+        (1) Anträge, die nicht rechtzeitig eingereicht worden sind, können nur auf die Tagesordnung gesetzt werden, wenn ein Drittel der anwesenden Stimmberechtigten dem zustimmt.
+
+        (2) Auf Antrag können Tagesordnungspunkte mit einfacher Mehrheit der anwesenden stimmberechtigten Mitglieder der Mitgliederversammlung von der Tagesordnung abgesetzt werden. Ebenso kann die Reihenfolge umgestellt werden. Alle fristgerecht eingebrachten Anträge müssen beraten werden.
+    \end{itemize}
+\end{itemize}
+
+\section{Öffentlichkeit}
+
+\begin{itemize}
+    \item \fest{Zur Mitgliederversammlung sind alle beratenden und stimmberechtigten Mitglieder der Mitgliederversammlung eingeladen.}
+    \item \fest{Die Öffentlichkeit kann durch einfache Mehrheit herbeigeführt werden.}
+    \item \fest{Personaldebatten sind nicht öffentlich.}
+\end{itemize}
+
+\section{Beratungsordnung}
+
+\begin{itemize}
+    \item \normal{Die Moderation erteilt das Wort in der Reihenfolge der Meldungen.}
+    \item \normal{Die Reihenfolge der Redner:innen richtet sich nach dem Eingang der Wortmeldungen. Dem Antragstellenden ist das Wort auch außerhalb der Reihenfolge zu erteilen. Handelt es sich um eine Gruppe, die den Antrag einbringt, muss sie einen Redeführer oder eine Redeführerin bestimmen.}
+    \item \normal{Die Mitglieder des Vorstandes erhalten außerhalb der Reihenfolge jederzeit das Wort.}
+    \item \normal{Die Moderation kann Redner:innen, die nicht zur Sache sprechen, nach einmaliger Mahnung das Wort entziehen.}
+\end{itemize}
+
+\section{Anträge und Abstimmungsregeln}
+
+\begin{itemize}
+    \item \fest{Jedes Mitglied des Plan b Chor Bonn e.V. hat das Recht, Anträge an die Mitgliederversammlung zu stellen. Sie sind in Textform einzureichen.}
+    \item \normal{Liegen mehrere Anträge zu einem Beratungsgegenstand vor, so ist über den weitestgehenden zuerst abzustimmen. Im Zweifelsfalle entscheidet die Moderation.}
+    \item \fest{Anträge werden mit einfacher Mehrheit der anwesenden Stimmberechtigten entschieden. Bei Stimmengleichheit ist der Antrag abgelehnt.}
+    \item \fest{Satzungs-, Geschäftsordnungs- und Beitragsänderungsanträge werden mit Zweidrittelmehrheit der anwesenden stimmberechtigten Mitglieder entschieden.}
+    \item \normal{Stimmenthaltung ist zulässig. Bei Errechnung des Abstimmungsergebnisses bleiben die Enthaltungen unberücksichtigt. Gibt es mehr Enthaltungen als die Ja- und Nein-Stimmen zusammen, gilt der Antrag als nicht entschieden. Er wird neu beraten oder der nächsten Mitgliederversammlung erneut vorgelegt.}
+    \item \normal{Die Abstimmung erfolgt durch Handzeichen. Wenn ein Mitglied der Mitgliederversammlung es beantragt, ist die Abstimmung geheim durchzuführen.}
+    \item \normal{Ist das Ergebnis der Abstimmung nicht zweifelsfrei festgestellt, so wird die Gegenprobe gemacht. Besteht auch dann keine Klarheit, so ist die Abstimmung zu wiederholen und auszuzählen.}
+    \item \normal{Das Ergebnis jeder Abstimmung stellt die Moderation fest und verkündet es.}
+    \item \normal{Über Sachbeschlüsse kann nach einer weiteren Beratung noch einmal abgestimmt werden. Für die erneute Aufnahme in die Tagesordnung ist die absolute Mehrheit der anwesenden Stimmberechtigten erforderlich.}
+\end{itemize}
+
+\section{Anträge zur Geschäftsordnung}
+
+\begin{itemize}
+    \item \normal{Durch Anträge zur Geschäftsordnung wird die Redner:innenliste unterbrochen. Diese Anträge sind sofort bzw. nach Beendigung des gegenwärtigen Redebeitrags zu behandeln.}
+    \item \normal{Hinweise und Anträge zur Geschäftsordnung dürfen sich nur mit dem Gang der Verhandlungen befassen. Dies sind:}
+    \begin{itemize}
+        \item Antrag auf Schluss der Debatte und sofortige Abstimmung
+        \item Antrag auf Schluss der Redner:innenliste
+        \item Antrag auf quotierte Redeliste (Erteilung des Wortes im Wechsel von Frauen und Männern zu dem jeweiligen Tagesordnungspunkt)
+        \item Antrag auf Beschränkung der Redezeit
+        \item Antrag auf Vertagung des Tagesordnungspunktes
+        \item Antrag auf Nichtbefassung mit dem Tagesordnungspunkt
+        \item Antrag auf Verbindung zweier Sachverhalte oder Trennung eines Sachverhaltes zur Beratung
+        \item Antrag auf Übergang zum Diskussionsgegenstand
+        \item Antrag auf Unterbrechung der Sitzung
+        \item Antrag auf Aufnahme von Äußerungen in das Protokoll
+        \item Hinweis zur Geschäftsordnung oder Verfahrensvorschlag
+    \end{itemize}
+    \item \normal{Anträge zur Geschäftsordnung können nur von stimmberechtigten Mitgliedern der Mitgliederversammlung gestellt werden.}
+    \item \normal{Erhebt sich bei einem Antrag zur Geschäftsordnung kein Widerspruch, ist der Antrag angenommen. Andernfalls ist nach Anhören eines Gegenredenden sofort abzustimmen.}
+    \item \normal{Über die oben aufgeführten Geschäftsordnungsanträge entscheiden -- mit Ausnahme von Punkt f) -- alle stimmberechtigten Mitglieder der Mitgliederversammlung mit einfacher Mehrheit. Über Punkt f) entscheidet die Zweidrittelmehrheit der anwesenden Stimmberechtigten.}
+    \item \normal{Weitere Geschäftsordnungsanträge ergeben sich aus den Bestimmungen und Erklärungen dieser Geschäftsordnung.}
+\end{itemize}
+
+\section{Initiativantrag}
+
+\begin{itemize}
+    \item \normal{Im Verlauf der Beratungen können Initiativanträge gestellt werden. Sie bedürfen zur Aufnahme in die Tagesordnung der Zustimmung von einem Drittel der anwesenden stimmberechtigten Mitglieder der Mitgliederversammlung. Die Einbringung eines Initiativantrages ist kein Geschäftsordnungsantrag.}
+\end{itemize}
+
+\section{Persönliche Erklärung}
+
+\begin{itemize}
+    \item \normal{Nach Schluss der Beratung eines Tagesordnungspunktes oder nach Beendigung der Abstimmung kann eine persönliche Erklärung abgegeben werden. Die persönliche Erklärung muss der Moderation schriftlich vorgelegt werden. Durch die persönliche Erklärung erhält der/die Redner:in Gelegenheit,}
+    \begin{itemize}
+        \item Äußerungen, die in Bezug auf ihre/seine Person gemacht wurden, zurückzuweisen
+        \item eigene Ausführungen richtig zu stellen
+        \item seine/ihre Stimmabgabe zu begründen.
+    \end{itemize}
+    \fest{Eine Debatte über die persönliche Erklärung findet nicht statt. Eine persönliche Erklärung ist in vollem Wortlaut ins Protokoll aufzunehmen.}
+\end{itemize}
+
+\section{Vorstandswahlen}
+
+\begin{itemize}
+    \item \fest{Vorstandswahlen werden in geheimer Abstimmung durchgeführt.}
+    \item \normal{Zur Vorbereitung und Durchführung der Wahl der satzungsgemäß bestimmten Ämter übernimmt die Moderation die Wahlleitung, sofern sich dagegen kein Widerspruch erhebt und die Moderation nicht für eines der zu besetzenden Ämter kandidiert. In diesen Fällen wählt die Mitgliederversammlung eine Wahlleitung mit einfacher Mehrheit der anwesenden Stimmberechtigten.}
+    \item \normal{Das Recht Kandidat:innen vorzuschlagen, steht jedem Mitglied der Versammlung zu.}
+    \item \normal{Die Wahlleitung eröffnet die Vorschlagsliste und gibt die Namen der vorgeschlagenen Kandidat:innen bekannt. Bei einem möglichen zweiten Wahlgang kann die Vorschlagliste erneut eröffnet werden.}
+    \item \normal{Die Wahlleitung schließt die Vorschlagsliste.}
+    \item \normal{Auf Antrag eines stimmberechtigten Mitglieds kann eine Personalbefragung und oder eine Personaldebatte stattfinden. Die Personaldebatte erfolgt in Abwesenheit der nichtstimmberechtigten Mitglieder, sowie aller Kandidat:innen des jeweiligen Wahlgangs. Zu einzelnen Punkten können Personen gehört werden, die Betroffenen sind in dem Fall von der Teilnahme ausgeschlossen.}
+    \item \normal{Die Wahlleitung eröffnet die Wahl.}
+    \item \normal{Die Wahlen erfolgen nach Ämtern getrennt.}
+    \item \normal{Bei Wahlen zum/zur Vorstandsvorsitzenden und zum/zur stellvertretenden Vorsitzenden ist eine Zweidrittelmehrheit der anwesenden Stimmberechtigten, für die Wahl notwendig. Es sind drei Wahlgänge möglich. Ab dem dritten Wahlgang erfolgt eine Stichwahl zwischen den beiden Kandidat:innen, die im zweiten Wahlgang die meisten Stimmen erhalten haben. Hier entscheidet die absolute Mehrheit der anwesenden Stimmberechtigten die Wahl. Steht nur ein/e Kandidat:in zur Wahl, der/die im ersten oder zweiten Wahlgang mehr Nein- als Ja-Stimmen erhält, muss die Wahl vorzeitig beendet werden.}
+    \item \normal{Ist niemand gewählt, kann sofort eine neue Kandidat:innenliste eröffnet und eine neue Wahl durchgeführt werden.}
+    \item \normal{Bei den Wahlen der restlichen Vorstandsmitglieder ist eine einfache Mehrheit der anwesenden Stimmberechtigten, für die Wahl notwendig. Es sind drei Wahlgänge möglich. Ab dem dritten Wahlgang erfolgt eine Stichwahl zwischen den beiden Kandidat:innen, die im zweiten Wahlgang die meisten Stimmen erhalten haben. Steht nur ein/e Kandidat:in zur Wahl, der/die im ersten oder zweiten Wahlgang mehr Nein- als Ja-Stimmen erhält, muss die Wahl vorzeitig beendet werden.}
+    \item \normal{Leer abgegebene Stimmzettel gelten als Enthaltung. Stimmzettel, die von der Wahlleitung vorgegebenen Fassung abweichen, sind ungültig.}
+    \item \normal{Nimmt der/die Gewählte die Wahl nicht an, wird die Wahlhandlung ab §44 wiederholt.}
+    \item \normal{Das Wahlergebnis kann innerhalb von 14 Tagen nach Beendigung der Wahl schriftlich angefochten werden. In diesem Fall ist der Härtefallausschuss zwecks Schlichtung anzurufen.}
+\end{itemize}
+
+\section{Sonstige Wahlen}
+
+\begin{itemize}
+    \item \normal{Soweit die Moderation nicht für das zu besetzende Wahlamt kandidiert und es keinen Widerspruch gibt, übernimmt sie die Wahlleitung. Ansonsten wählt die Mitgliederversammlung eine Wahlleitung mit einfacher Mehrheit der anwesenden Stimmberechtigten.}
+    \item \normal{Bei anderen Ämtern kann per Handzeichen als auch in Form einer En-bloc-Wahl abgestimmt werden, wenn dies beantragt wird und sich kein Widerspruch erhebt. Dies ist nicht möglich, wenn es mehr Kandidierende als zu belegende Wahlämter gibt.}
+    \item \normal{Kandidat:innenvorschläge können bis spätestens zur Eröffnung der Wahl eingereicht werden. Vorschlagsberechtigt sind alle Mitglieder des jeweiligen Organs.}
+    \item \normal{Die Wahl beginnt mit dem Schließen der Kandidat:innenliste.}
+    \item \normal{Auf Antrag findet eine Personalbefragung statt. An ihr können sich alle Mitglieder der Versammlung beteiligen. Auf Antrag kann auch eine Personaldebatte stattfinden. Die Regelungen zur Personaldebatte bei Wahlen zum Vorstand gelten sinngemäß.}
+    \item \normal{Die Wahlleitung gibt das Ergebnis bekannt. Der gewählte Kandidat / die gewählte Kandidatin erklärt dem jeweiligen Gremium, ob er/sie die Wahl annimmt.}
+    \item \normal{Ist niemand oder eine nicht ausreichende Zahl von Personen gewählt, kann sofort eine neue Kandidaten:innenliste eröffnet und eine neue Wahl durchgeführt werden.}
+    \item \normal{Leer abgegebene Stimmzettel gelten als Enthaltung. Stimmzettel, die von der vorgeschriebenen Fassung abweichen, die von der Wahlleitung bekannt gegeben wird, sind ungültig.}
+    \item \normal{Nimmt der/die Gewählte die Wahl nicht an, wird die Wahlhandlung ab Paragraph 58 wiederholt.}
+    \item \normal{Das Wahlergebnis kann innerhalb von 14 Tagen nach Beendigung der Wahl schriftlich angefochten werden. In diesem Fall ist der Härtefallausschuss zwecks Schlichtung anzurufen.}
+\end{itemize}
+
+\section{Chorleitung}
+
+\begin{itemize}
+    \item \normal{Die Mitgliederversammlung beauftragt den Vorstand eine Chorleitung einzustellen, die für die Erfüllung der Satzung und Geschäftsordnung geeignet und durch entsprechende Abschlüsse qualifiziert ist.}
+    \item \normal{Aufgaben der Chorleitung sind:}
+    \begin{itemize}
+        \item Das Leiten der Chorproben und der öffentlichen Auftritte des Chores. Sie ist für die musikalische Arbeit im Chor verantwortlich.
+        \item Sie berät den Chorrat bei der Anschaffung von Noten und bei der Programmgestaltung für die öffentlichen Auftritte des Chores.
+        \item Sie beurteilt die Eignung der Singenden für die einzelnen Stimmlagen und setzt diese entsprechend ein.
+        \item Die Fähigkeiten und Potentiale der Bewerbenden kennenzulernen und den Vorstand dahingehend beratend zu unterstützen.
+    \end{itemize}
+    \item \normal{Bei Bedarf kann die Chorleitung zur Mitgliederversammlung miteingeladen werden. Der Vorstand hat die Mitglieder des Plan b Chor Bonn e.V. darüber bei der Einladung zur Mitgliederversammlung in Kenntnis zu setzen.}
+\end{itemize}
+
+\section{Ende der Beratung}
+
+\begin{itemize}
+    \item \normal{Die Mitgliederversammlung kann die Beratungen vertagen oder beenden.}
+    \item \normal{Die Abstimmung über den Schlussantrag (Antrag auf Schließung der Versammlung) ist nur zulässig, wenn wenigstens ein Mitglied der Mitgliederversammlung Gelegenheit erhält, dagegen zu sprechen. Der Schlussantrag geht dem Vertagungsantrag vor, dieser wiederum allen übrigen Anträgen.}
+    \item \normal{Beschlüsse zur Vertagung oder Schließung der Mitgliederversammlung bedürfen der Zweidrittelmehrheit der anwesenden Stimmberechtigten.}
+\end{itemize}
+
+\section{Anfertigung des Protokolls}
+
+\begin{itemize}
+    \item \fest{Über den Verlauf der Mitgliederversammlung wird ein Ergebnisprotokoll angefertigt, das vom Vorstand unterzeichnet wird.}
+    \item \normal{Das Protokoll enthält:}
+    \begin{itemize}
+        \item Die Anwesenden getrennt nach Stimmberechtigten, Beratungsberechtigten und Gästen
+        \item Die Tagesordnungspunkte
+        \item Die Gegenstände und Ergebnisse der Beratungen zu den einzelnen Tagesordnungspunkten
+        \item Die Ergebnisse der Abstimmungen
+        \item Alle ausdrücklich zum Zwecke der Niederschrift gegebenen Erklärungen.
+    \end{itemize}
+\end{itemize}
+
+\section{Versendung des Protokolls}
+
+\begin{itemize}
+    \item \fest{Das Protokoll wird allen Mitgliedern des Plan b Chor Bonn e.V. innerhalb von acht Wochen nach Beendigung der Konferenz in Textform zugeschickt. Es gilt als genehmigt, wenn innerhalb von sechs Wochen nach Erhalt beim Vorstand gegen die Verfassung des Protokolls kein schriftlicher Einspruch erhoben wird.}
+    \item \fest{Der Vorstand benachrichtigt die Mitglieder des Plan b Chor Bonn e.V. über die Einsprüche gegen das Protokoll innerhalb eines Monats nach Einspruchsfrist. Inhaltliche Einsprüche sind auf die Tagesordnung der nächsten Mitgliederversammlung zu setzen und werden dort endgültig entschieden.}
+\end{itemize}
+
+\section{Abweichungen und Änderungen von der Geschäftsordnung}
+
+\begin{itemize}
+    \item \normal{Im Einzelfall kann von den Vorschriften dieser Geschäftsordnung abgewichen werden. Änderungen der Geschäftsordnung müssen mit Zweidrittelmehrheit der anwesenden Stimmberechtigten der Mitgliederversammlung beschlossen werden.}
+\end{itemize}
+
+\section{Inkrafttreten}
+
+Die Geschäftsordnung tritt am 16.04.2024 in Kraft.
+
+\section{Ergänzende Erklärungen/Begriffsdefinition}
+
+\begin{enumerate}
+    \item „einfache Mehrheit" = unter den abgegebenen Stimmen sind mehr Ja- als Nein-Stimmen. Allerdings dürfen die Enthaltungen und ungültigen Stimmen die abgegebenen Ja- und Nein-Stimmen nicht überwiegen.
+    \item „absolute Mehrheit" = Mehrheit der abgegebenen Stimmen. Für die absolute Mehrheit müssen mehr als 50 \% der abgegebenen Stimmen mit Ja stimmen oder auf die entsprechende Person entfallen. Die Enthaltungen wirken in diesem Fall wie Nein-Stimmen.
+    \item Bei Quoren, bei welchen mehr als 50\% der abgegebenen Stimmen Ja-Stimmen sein müssen, gelten Enthaltungen ebenfalls wie Nein-Stimmen.
+    \item Von den in der Geschäftsordnung farblich markierten Passagen kann nicht entsprechend Punkt 76 abgewichen werden.
+\end{enumerate}
+
+\end{document}
