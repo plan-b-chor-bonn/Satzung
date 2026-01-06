@@ -37,7 +37,12 @@ jobs:
 
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%d.%m.%Y')" >> $GITHUB_OUTPUT
+        run: |
+          echo "date=$(date +'%d.%m.%Y')" >> $GITHUB_OUTPUT
+
+      - name: List artifacts
+        run: |
+          ls -al "${{ github.workspace }}/dist"
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
@@ -48,7 +53,7 @@ jobs:
           body: |
             Diese Satzung wurde durch die Mitgliederversammlung vom ${{ vars.date_of_resolution }} beschlossen.
             Entspricht der Release-Tag nicht dem Release-Datum, so handelt es sich um redaktionelle Änderungen.
-          artifacts: "/dist/*.pdf"
+          artifacts: "${{ github.workspace }}/dist/*.pdf"
           allowUpdates: true
           replacesArtifacts: true
           makeLatest: true
