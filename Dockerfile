@@ -24,9 +24,4 @@ RUN mkdir -p /src
 
 WORKDIR /root
 
-# COPY scripts/* .
-
-# RUN chmod +x install-texlive.sh && \
-#     ./install-texlive.sh
-
 COPY src/Satzung.tex /src
