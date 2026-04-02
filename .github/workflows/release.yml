@@ -11,20 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Set up docker buildx
-        uses: docker/setup-buildx-action@v2
+      - name: Log in to GHCR
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prepare build Dockerfile
-        run: docker build -t latex-compiler .
+      - name: Pull latex-compiler image
+        run: docker pull ghcr.io/${{ github.repository_owner }}/latex-compiler:latest
 
       - name: Build Satzung.pdf
         run: |
           docker run --rm \
             -v "${{ github.workspace }}/src:/src" \
             -v "${{ github.workspace }}/dist:/dist" \
-            latex-compiler \
+            ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
             /bin/bash -c "pdflatex -output-directory /dist /src/Satzung.tex && pdflatex -output-directory /dist /src/Satzung.tex"
 
       - name: Build Geschaeftsordnung.pdf
@@ -32,7 +36,7 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}/src:/src" \
             -v "${{ github.workspace }}/dist:/dist" \
-            latex-compiler \
+            ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
             /bin/bash -c "pdflatex -output-directory /dist /src/Geschaeftsordnung.tex && pdflatex -output-directory /dist /src/Geschaeftsordnung.tex"
 
       - name: Build Beitragsordnung.pdf
@@ -40,7 +44,7 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}/src:/src" \
             -v "${{ github.workspace }}/dist:/dist" \
-            latex-compiler \
+            ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
             /bin/bash -c "pdflatex -output-directory /dist /src/Beitragsordnung.tex && pdflatex -output-directory /dist /src/Beitragsordnung.tex"
 
       - name: Get current date
@@ -53,7 +57,7 @@ jobs:
           ls -al "${{ github.workspace }}/dist"
 
       - name: Create GitHub Release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1
         with:
           tag: ${{ vars.date_of_resolution }}
           commit: ${{ github.sha }}
@@ -77,7 +81,7 @@ jobs:
           gh release download --repo ${{ github.repository }} --pattern "*.pdf"
 
       - name: Upload Satzung.pdf to plan-b-chor.de
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        uses: SamKirkland/FTP-Deploy-Action@a51268f67f6605236975928ae28b0f7e9971d50a # v4.3.6
         with:
           server: ${{ secrets.ftp_host }}
           username: ${{ secrets.ftp_username }}
