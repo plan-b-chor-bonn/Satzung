@@ -35,6 +35,14 @@ jobs:
             latex-compiler \
             /bin/bash -c "pdflatex -output-directory /dist /src/Geschaeftsordnung.tex && pdflatex -output-directory /dist /src/Geschaeftsordnung.tex"
 
+      - name: Build Beitragsordnung.pdf
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/src:/src" \
+            -v "${{ github.workspace }}/dist:/dist" \
+            latex-compiler \
+            /bin/bash -c "pdflatex -output-directory /dist /src/Beitragsordnung.tex && pdflatex -output-directory /dist /src/Beitragsordnung.tex"
+
       - name: Get current date
         id: date
         run: |
