@@ -1,0 +1,48 @@
+\usepackage[headsepline]{scrlayer-scrpage}
+\renewcommand{\headfont}{\sffamily}
+\renewcommand{\footfont}{\sffamily \fontsize{9}{8}\selectfont}
+\setlength{\headheight}{58pt} % logo height
+\setlength{\footheight}{58pt} % logo height
+\clearpairofpagestyles
+\usepackage{graphicx}
+\usepackage{zref-totpages}
+
+\ihead{%
+% \unitlength1mm
+\textbf{Mitgliedschaftsantrag - \verein}\vspace{-2.1em}
+\begin{flushright}Seite \pagemark\ von \ztotpages\end{flushright}
+% \hspace{-0.9cm}
+% \includegraphics[width=3cm]{PB_Logo_ohne_Rand.png}
+\vspace{-1.9em}
+}
+\setlength{\footheight}{10em}
+\cfoot{%
+% \rule{\textwidth}{0.5pt}\vspace{5pt}
+\color{footer_shade}
+\begin{tabular}{l}
+    \includegraphics[width=0.1\linewidth]{lib/PB_Logo_ohne_Rand_ohne_Padding.png}
+\end{tabular}
+\begin{tabular}{l}
+    \vspace{0.3em}
+    \textbf{Adresse}\\
+    \verein\\
+    \vereinadresse
+\end{tabular}%
+% \hspace{.5cm}%
+\begin{tabular}{l}
+    \vspace{0.3em}
+    \textbf{Bankverbindung}\\
+    \iban\\
+    GENODEF1SLR\\
+    Deutsche Skatbank
+\end{tabular}%
+% \hspace{.5cm}%
+\begin{tabular}{ll}
+    \vspace{0.3em}
+    \textbf{Kontakt}\\
+    mail & \href{mailto:vorstand@plan-b-chor.de}{\color{footer_shade}vorstand@plan-b-chor.de}\\
+    web & \href{https://plan-b-chor.de}{\color{footer_shade}plan-b-chor.de}\\
+    social & \href{https://www.instagram.com/planbchor_bonn/}{\color{footer_shade}planbchor\_bonn}
+    \\
+\end{tabular}%
+}

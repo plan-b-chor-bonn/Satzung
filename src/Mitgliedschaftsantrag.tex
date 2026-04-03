@@ -1,0 +1,138 @@
+\documentclass[parskip=half]{scrreprt}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{raleway}
+\usepackage[ngerman]{babel}
+\usepackage{helvet}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage[margin=2cm]{geometry}
+\usepackage{eurosym}
+\usepackage[shortlabels]{enumitem}
+\usepackage{csquotes}
+\usepackage[babel=true]{microtype}
+\usepackage{setspace}
+
+\usepackage[dvipsnames]{xcolor}
+
+% ToDo-Notes: Parameter "disable" versteckt alle Notizen.
+\usepackage[colorinlistoftodos]{todonotes}
+\newcommand{\litnote}[1]{\todo[inline,color=blue!40]{#1}}
+\newcommand{\refnote}[1]{\todo[color=blue!40]{#1}}
+\newcommand{\note}[1]{\todo[inline,color=green!40]{#1}}
+
+
+\usepackage[pdftex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\def\LayoutTextField#1#2{#2}
+\def\tf#1#2{\TextField[name=#1,width=#2,bordercolor={},backgroundcolor={}]{\null}}
+
+\def\LayoutCheckField#1#2{#2}
+\def\cb#1{\CheckBox[name=#1,height=0.5cm,width=0.5cm,bordercolor=black]{\null}}
+
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+\input{lib/common}
+\input{lib/headfoot}
+
+\begin{document}
+\section*{Antrag auf Aufnahme\\als aktives Mitglied im \verein}
+
+\begin{Form}
+Hiermit beantrage ich die aktive Mitgliedschaft im \verein.
+\vspace{-0.5cm}
+\subsection*{Stammdaten}
+\begin{tabularx}{\textwidth}{@{}p{3cm} X}
+Nachname       & \tf{nachname}{13cm} \\ [-2ex] & \hrulefill \\[0.8ex]
+Vorname        & \tf{vorname}{13cm} \\ [-2ex] & \hrulefill \\[0.8ex]
+Straße, Nr.    & \tf{strasse}{13cm} \\ [-2ex] & \hrulefill \\[0.8ex]
+PLZ, Ort       & \tf{plzort}{13cm} \\ [-2ex] & \hrulefill \\[0.8ex]
+E-Mail         & \tf{email}{13cm} \\ [-2ex] & \hrulefill \\[0.8ex]
+Geburtsdatum   & \tf{geburtsdatum}{7cm} \\ [-2ex] & \hrulefill \\[0.8ex]
+Eintritt zum   & \tf{datum_eintritt}{7cm} \\ [-2ex] & \hrulefill \ {\small (Eintritt möglich zum Monatsersten)}\\
+\end{tabularx}
+\subsubsection*{Mitgliedsbeitrag}
+
+Der Mitgliedsbeitrag richtet sich nach der aktuellen \href{https://plan-b-chor.de/dokumente}{Beitragsordnung}.
+
+\cb{cb_30} Ich zahle den vollen Mitgliedsbeitrag i.H.v. 30 \euro{} / Monat.\\
+\cb{cb_20} Ich \textbf{beantrage} den ermäßigten Mitgliedsbeitrag i.H.v. 20 \euro{} / Monat.
+
+\vspace{-0.5cm}
+\subsubsection*{Aufnahmegebühr}
+\cb{cb_aufnahmegebuehr} Ich zahle die Aufnahmegebühr i.H.v. 20\,\euro{} gemäß §\,12 der \href{https://plan-b-chor.de/dokumente}{Beitragsordnung}.
+
+\vspace{0.5cm}
+
+Mit meiner Unterschrift erkenne ich die \href{https://plan-b-chor.de/dokumente}{Satzung, die Geschäftsordnung, sowie die Beitragsordnung} an und verpflichte mich, die satzungsgemäßen Ziele des \verein nach Kräften zu unterstützen.
+% Außerdem habe ich die Datenschutzhinweise zur Kenntnis genommen und akzeptiere diese.
+
+\vspace{2em}
+\begin{tabularx}{\textwidth}{p{7cm}p{.5cm}X}
+\tf{datum_mitglied}{7cm} & & \\[-2ex]
+\hrulefill & & \hrulefill \\
+\hspace{0.2em}Ort, Datum & & \hspace{0.15em}Unterschrift Antragsteller*in \\
+\end{tabularx}%
+
+\vspace{0.2cm}
+\setlength{\fboxsep}{0.5em}
+\colorbox{ci_green}{
+%\fbox{    % fbox als Alternative zur colorbox
+\begin{minipage}{\textwidth - 2\fboxsep}
+{\tiny Dieser Bereich wird vom Vorstand ausgefüllt.}\\[1em]
+Der Vorstand bestätigt die Aufnahme.\\
+
+\begin{tabularx}{\textwidth}{@{}p{4cm} c p{5cm} c p{5cm}}
+\tf{datum_vorstand}{3cm} & & \\[-2ex]
+\hrulefill & & \hrulefill & & \hrulefill\\
+\hspace{0.2em}Ort, Datum & & \hspace{0.2em}1. Unterschrift Vorstand & & \hspace{0.15em}2. Unterschrift Vorstand%
+\end{tabularx}
+\end{minipage}}
+
+\newpage
+
+\subsection*{Datenschutzhinweise}
+
+Zur Mitgliederverwaltung und Kommunikation innerhalb des Vereins werden folgende Daten elektronisch gespeichert, verarbeitet und genutzt:\\
+
+\vspace{-0.5cm}
+Vor- und Nachname, Postanschrift, private E-Mail-Adresse, Eintrittsdatum, Stimmgruppe, Geburtsdatum
+
+Der \verein setzt als interne Arbeits- und Kommunikationsplattform \textbf{Microsoft Teams} ein.
+Jedem Mitglied wird, auf Grundlage der im Antrag angegebenen Daten, ein persönlicher Microsoft Account zur Verfügung gestellt.
+Dieser Account ist insbesondere notwendig, um den Zugriff auf urheberrechtlich geschütztes Notenmaterial einzuschränken.
+
+Weitere Informationen zu Microsoft Teams befinden sich in der Datenschutzerklärung von
+Microsoft: {\color{ci_blue}https://privacy.microsoft.com/de-de/privacystatement}.
+
+Wird ein ermäßigter Mitgliedsbeitrag beantragt, sind geeignete Nachweise einzureichen. Diese Dokumente dienen ausschließlich der Antragsprüfung und werden nach erfolgter Bearbeitung und Entscheidung wieder gelöscht, spätestens nach einem Monat.
+
+Die Rechtsgrundlage dieser Datenverarbeitungen ist Art. 6 Abs. 1 lit. b) DSGVO. Die Daten werden bei Beendigung der Mitgliedschaft gelöscht.
+
+Verantwortlich für die Datenverarbeitung ist der geschäftsführende Vorstand des \verein bestehend aus: \vorstandvorsitz, \vorstandvorsitzstv, \vorstandkasse, \vorstandschrift
+
+\vspace{-0.5cm}
+\subsubsection*{Einwilligung zur Datenverarbeitung}
+
+\cb{cb_datenschutz} Ich bin mit der Erhebung, Verarbeitung und Nutzung der oben genannten personenbezogenen Daten durch den \verein einverstanden. Ohne dieses Einverständnis ist eine Aufnahme nicht möglich.
+
+\vspace{-0.5cm}
+\subsubsection*{Veröffentlichung von Bild- und Videoaufnahmen}
+
+Bei Veranstaltungen und Proben des Vereins entstehen Bild- und Videoaufnahmen. Diese Aufnahmen können auf der Vereinswebsite sowie in den sozialen Medien zu Werbezwecken veröffentlicht werden.
+
+Liegt keine Einwilligung vor, muss vor der Annahme des Antrags, gemeinsam mit dem Vorstand, eine individuelle Lösung vereinbart werden.
+
+\cb{cb_bild} Ich stimme der Veröffentlichung von Bildaufnahmen durch den \verein zu.\\
+\cb{cb_video} Ich stimme der Veröffentlichung von Videoaufnahmen durch den \verein zu.
+
+\vspace{4em}
+\begin{tabular}{p{7cm}p{.5cm}p{7cm}}
+\tf{datum_mitglied}{7cm} & & \\[-2ex]
+\hrulefill & & \hrulefill \\
+\hspace{0.2em}Ort, Datum & & \hspace{0.15em}Unterschrift Antragsteller*in \\
+\end{tabular}%
+
+\end{Form}
+
+\end{document}
