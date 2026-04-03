@@ -1,5 +1,5 @@
-# ABOUTME: Compiles and deploys Mitgliedschaftsantrag.pdf to plan-b-chor.de.
-# ABOUTME: Triggered by changes to the source file only — never creates a GitHub release.
+# ABOUTME: Compiles and deploys all PDFs to plan-b-chor.de when Mitgliedschaftsantrag changes.
+# ABOUTME: Triggered by changes to Mitgliedschaftsantrag.tex only — never creates a GitHub release.
 name: Deploy Mitgliedschaftsantrag PDF
 
 on:
@@ -35,7 +35,31 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
             /bin/bash -c "cd /src && pdflatex -output-directory /dist Mitgliedschaftsantrag.tex && pdflatex -output-directory /dist Mitgliedschaftsantrag.tex"
 
-      - name: Upload Mitgliedschaftsantrag.pdf to plan-b-chor.de
+      - name: Build Satzung.pdf
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/src:/src" \
+            -v "${{ github.workspace }}/dist:/dist" \
+            ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
+            /bin/bash -c "pdflatex -output-directory /dist /src/Satzung.tex && pdflatex -output-directory /dist /src/Satzung.tex"
+
+      - name: Build Geschaeftsordnung.pdf
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/src:/src" \
+            -v "${{ github.workspace }}/dist:/dist" \
+            ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
+            /bin/bash -c "pdflatex -output-directory /dist /src/Geschaeftsordnung.tex && pdflatex -output-directory /dist /src/Geschaeftsordnung.tex"
+
+      - name: Build Beitragsordnung.pdf
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}/src:/src" \
+            -v "${{ github.workspace }}/dist:/dist" \
+            ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
+            /bin/bash -c "pdflatex -output-directory /dist /src/Beitragsordnung.tex && pdflatex -output-directory /dist /src/Beitragsordnung.tex"
+
+      - name: Upload alle PDFs to plan-b-chor.de
         uses: SamKirkland/FTP-Deploy-Action@a51268f67f6605236975928ae28b0f7e9971d50a # v4.3.6
         with:
           server: ${{ secrets.ftp_host }}
@@ -43,5 +67,6 @@ jobs:
           password: ${{ secrets.ftp_password }}
           port: ${{ secrets.ftp_port }}
           protocol: ${{ secrets.ftp_protocol }}
-          local-dir: ${{ vars.ftp_source_dir }}
+          local-dir: ./dist/
           server-dir: ${{ vars.ftp_dest_dir }}
+          exclude: "**/*.aux|**/*.log|**/*.out"
