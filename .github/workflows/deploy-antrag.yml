@@ -72,4 +72,8 @@ jobs:
           protocol: ${{ secrets.ftp_protocol }}
           local-dir: ./dist/
           server-dir: ${{ vars.ftp_dest_dir }}
-          exclude: "**/*.aux|**/*.log|**/*.out"
+          exclude: |
+            **/*.aux
+            **/*.log
+            **/*.out
+            **/*.toc
