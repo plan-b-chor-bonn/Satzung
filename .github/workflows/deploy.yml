@@ -1,4 +1,6 @@
-name: Build and Release LaTeX PDF
+# ABOUTME: Compiles all LaTeX documents and deploys PDFs to plan-b-chor.de.
+# ABOUTME: Triggered on every push to main or manually via workflow_dispatch.
+name: Build and Deploy PDFs
 
 on:
   push:
@@ -7,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  release:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,6 +24,9 @@ jobs:
 
       - name: Pull latex-compiler image
         run: docker pull ghcr.io/${{ github.repository_owner }}/latex-compiler:latest
+
+      - name: Create dist directory
+        run: mkdir -p dist
 
       - name: Build Satzung.pdf
         run: |
@@ -47,40 +52,15 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
             /bin/bash -c "pdflatex -output-directory /dist /src/Beitragsordnung.tex && pdflatex -output-directory /dist /src/Beitragsordnung.tex"
 
-      - name: Get current date
-        id: date
+      - name: Build Mitgliedschaftsantrag.pdf
         run: |
-          echo "date=$(date +'%d.%m.%Y')" >> $GITHUB_OUTPUT
+          docker run --rm \
+            -v "${{ github.workspace }}/src:/src" \
+            -v "${{ github.workspace }}/dist:/dist" \
+            ghcr.io/${{ github.repository_owner }}/latex-compiler:latest \
+            /bin/bash -c "cd /src && pdflatex -output-directory /dist Mitgliedschaftsantrag.tex && pdflatex -output-directory /dist Mitgliedschaftsantrag.tex"
 
-      - name: List artifacts
-        run: |
-          ls -al "${{ github.workspace }}/dist"
-
-      - name: Create GitHub Release
-        uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1
-        with:
-          tag: ${{ vars.date_of_resolution }}
-          commit: ${{ github.sha }}
-          name: "Satzung vom ${{ vars.date_of_resolution }} (Stand: ${{ steps.date.outputs.date }})"
-          body: |
-            Diese Satzung wurde durch die Mitgliederversammlung vom ${{ vars.date_of_resolution }} beschlossen.
-            Entspricht der Release-Tag nicht dem Release-Datum, so handelt es sich um redaktionelle Änderungen.
-          artifacts: "${{ github.workspace }}/dist/*.pdf"
-          allowUpdates: true
-          replacesArtifacts: true
-          makeLatest: true
-
-  deploy:
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download PDFs from latest release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release download --repo ${{ github.repository }} --pattern "*.pdf"
-
-      - name: Upload Satzung.pdf to plan-b-chor.de
+      - name: Deploy PDFs to plan-b-chor.de
         uses: SamKirkland/FTP-Deploy-Action@a51268f67f6605236975928ae28b0f7e9971d50a # v4.3.6
         with:
           server: ${{ secrets.ftp_host }}
@@ -88,5 +68,10 @@ jobs:
           password: ${{ secrets.ftp_password }}
           port: ${{ secrets.ftp_port }}
           protocol: ${{ secrets.ftp_protocol }}
-          local-dir: ${{ vars.ftp_source_dir }}
+          local-dir: ./dist/
           server-dir: ${{ vars.ftp_dest_dir }}
+          exclude: |
+            **/*.aux
+            **/*.log
+            **/*.out
+            **/*.toc
